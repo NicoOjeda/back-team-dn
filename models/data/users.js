@@ -2,6 +2,7 @@ let users =[
     {
         "name":  "Nicolas",
         "lastName": "Ojeda",
+        "role": "admin",
         "photo": "https://modaellos.com//wp-content/uploads/2017/11/cortes-tipo-rostro-ovalado-istock.jpg",
         "age": 37,
         "email": "nico_ojeda86@hotmail.com",
@@ -13,6 +14,7 @@ let users =[
     {
         "name": "David",
         "lastName": "Chaban",
+        "role": "admin",
         "photo": "https://i.pinimg.com/236x/3f/7e/57/3f7e57fd2ba5f05154bb226369666a34--aaron-kwok-hot-asian-men.jpg",
         "age": 23,
         "email": "davidchaban@gmail.com",
@@ -24,6 +26,7 @@ let users =[
     {
         "name": "Luis",
         "lastName": "Rodriguez",
+        "role": "admin",
         "photo": "https://i.pinimg.com/736x/14/f2/0e/14f20ec449b70bbd47641fc948cad163.jpg",
         "age": 38,
         "email": "luisrodriguez@gmail.com",
@@ -35,6 +38,7 @@ let users =[
     {
         "name": "Eduardo",
         "lastName": "Varela",
+        "role": "admin",
         "photo": "https://i.pinimg.com/550x/ab/80/49/ab804996e354c09fc764748e94b5955a.jpg",
         "age": 26,
         "email": "eduvarela@gmail.com",
@@ -53,6 +57,7 @@ users.forEach( element =>
     User.create({
         name: element.name,
         lastName: element.lastName,
+        role: element.role,
         photo: element.photo,
         age: element.age,
         email: element.email,
