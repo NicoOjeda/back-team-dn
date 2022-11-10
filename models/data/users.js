@@ -53,7 +53,7 @@ require('dotenv').config()
 require('../../config/database')
 const User = require('../User')
 
-users.forEach( element =>
+users.forEach( element =>{
     User.create({
         name: element.name,
         lastName: element.lastName,
@@ -66,4 +66,4 @@ users.forEach( element =>
         verified: element.verified,
         logged: element.logged,
     })
-)
+})
