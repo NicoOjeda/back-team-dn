@@ -5,7 +5,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('./config/database')
+
 // const errorHandler = require('./middlewares/errorHandler')
+
+
+const cors = require('cors');
+
+var indexRouter = require('./routes/index');
 
 var indexRouter = require('./routes/index');
 
@@ -26,11 +32,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(middlewareTime)
 // app.use(errorHandler.notFound)
 app.use(cors());
 
+app.use(cors());
+
+
 app.use('/api', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {   

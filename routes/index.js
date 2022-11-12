@@ -1,5 +1,18 @@
 let router = require('express').Router()
 
+
+
+let hotel = require('./hotel')
+
+
+
+router.use('/api/hotels', hotel)
+
+
+
+
+
+
 let userRoute = require('./userRoute')
 
 let cityRoute = require('./cityRoute')
@@ -20,6 +33,7 @@ const bodyUser = (req, res, next) => {
 // router.use('/api/users', userRoute)
 router.use('/cities', middlewareTime, cityRoute)
 router.use('/user', userRoute)
+
 
 
 module.exports = router;
