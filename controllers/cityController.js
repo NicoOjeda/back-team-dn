@@ -17,5 +17,6 @@ const cityCreated = {
             })
         }
     },
-}
+} 
+
 module.exports = cityCreated
