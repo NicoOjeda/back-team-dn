@@ -54,7 +54,7 @@ const controller = {
                     message: "hotel modified"
                 })
             } else {
-                res.status(200).json({
+                res.status(404).json({
                     success: false,
                     message: "hotel not finded"
                 })
@@ -67,13 +67,32 @@ const controller = {
             })
         }
     },
-    // destroy: async (req,res)=>{
-    //     try{
+    destroy: async (req,res)=>{
+        let {id} = req.params
 
-    //     } catch{
-            
-    //     }
-    // },
+        try{
+            let one = await Hotel.findOneAndDelete ({_id : id})
+            if(one){
+                res.status(200).json({
+                    id: one._id,
+                    success: true,
+                    message: "hotel deleted"
+                })
+            } else{
+                res.status(404).json({
+                    success: false,
+                    message: "hotel not finded"
+                })
+            }
+
+        } 
+        catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
 }
 
 module.exports = controller
