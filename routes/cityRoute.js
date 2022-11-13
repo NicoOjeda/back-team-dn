@@ -1,9 +1,12 @@
 let router = require('express').Router();
-let { create , update  } = require('../controllers/cityController')
+let { create ,read, update,destroy} = require('../controllers/cityController')
 
 
 router.post('/', create );
+router.route('/read').get(read);
 router.put('/:id', update);
+router.get('/', read);
+router.delete('/destroy/:id',destroy);
 
 
   
