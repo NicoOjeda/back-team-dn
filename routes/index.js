@@ -3,10 +3,13 @@ let router = require('express').Router()
 
 
 let hotel = require('./hotel')
+let show = require('./show')
+
 
 
 
 router.use('/hotels', hotel)
+router.use('/shows', show)
 
 
 
