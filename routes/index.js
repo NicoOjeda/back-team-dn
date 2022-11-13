@@ -16,7 +16,8 @@ router.use('/hotels', hotel)
 let userRoute = require('./userRoute')
 
 let cityRoute = require('./cityRoute')
-const cityCreated = require('../controllers/cityController')
+
+let itinerariesRoute = require('./itinerariesRoute')
 
 const middlewareTime = (req,res, next) => {
     console.log('Time:', Date.now()) // Imprime por consola cada vez q sale una peticion
@@ -34,6 +35,7 @@ router.use('/user', middlewareTime, bodyUser, userRoute)
 router.use('/api/users', userRoute)
 router.use('/cities', middlewareTime, cityRoute)
 router.use('/user', userRoute)
+router.use('/itineraries', itinerariesRoute)
 // router.use('/id')
 // router.use('/City',cityCreated)
 
