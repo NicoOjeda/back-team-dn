@@ -18,7 +18,34 @@ const controllerShow = {
                 message: error.message
         })
     }
-}
+},
+    update : async(req,res)=>{
+        
+        let { id } = req.params
+
+        try{
+            let oneU = await Show.findOneAndUpdate({_id:id}, req.body, {new: true})
+            if(oneU){
+                res.status(200).json({
+                    id: oneU._id,
+                    success: true,
+                    message: "show modified"
+    
+                })
+            } else {
+                res.status(404).json({
+                    success: true,
+                    message: "show not finded"
+                })
+            }
+        }catch (error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+
+    }
 }
 
 module.exports = controllerShow
