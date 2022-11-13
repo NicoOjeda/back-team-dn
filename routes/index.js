@@ -6,7 +6,7 @@ let hotel = require('./hotel')
 
 
 
-router.use('/api/hotels', hotel)
+router.use('/hotels', hotel)
 
 
 
