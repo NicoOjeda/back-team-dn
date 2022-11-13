@@ -16,6 +16,7 @@ router.use('/hotels', hotel)
 let userRoute = require('./userRoute')
 
 let cityRoute = require('./cityRoute')
+const cityCreated = require('../controllers/cityController')
 
 const middlewareTime = (req,res, next) => {
     console.log('Time:', Date.now()) // Imprime por consola cada vez q sale una peticion
@@ -29,10 +30,13 @@ const bodyUser = (req, res, next) => {
          throw new Error('El nombre es muy corto')
     }
 }
-// router.use('/user', middlewareTime, bodyUser, userRoute)
-// router.use('/api/users', userRoute)
+router.use('/user', middlewareTime, bodyUser, userRoute)
+router.use('/api/users', userRoute)
 router.use('/cities', middlewareTime, cityRoute)
 router.use('/user', userRoute)
+// router.use('/id')
+// router.use('/City',cityCreated)
+
 
 
 
