@@ -9,7 +9,7 @@ require('./config/database')
 // const errorHandler = require('./middlewares/errorHandler')
 
 
-const cors = require('cors');
+
 
 var indexRouter = require('./routes/index');
 
@@ -37,7 +37,7 @@ app.use(middlewareTime)
 // app.use(errorHandler.notFound)
 app.use(cors());
 
-app.use(cors());
+
 
 
 app.use('/api', indexRouter);
