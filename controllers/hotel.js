@@ -18,7 +18,6 @@ const controller = {
         }
     },
     read: async (req,res)=>{
-
         let query = {}
         let order = {}
 
@@ -28,7 +27,6 @@ const controller = {
         if(req.query.order){
             order = { name:  req.query.order}
         }
-
         try{
             let all = await Hotel.find(query).sort(order)
             res.status(200).json( {
@@ -43,13 +41,32 @@ const controller = {
             })
         } 
     },
-    // update: async (req,res)=>{
-    //     try{
+    update: async (req,res)=>{
 
-    //     } catch{
-            
-    //     }
-    // },
+        let {id} = req.params
+
+        try{
+            let one = await Hotel.findOneAndUpdate({_id : id}, req.body ,  {new: true })
+            if(one){
+                res.status(200).json({
+                    id: one._id,
+                    success: true,
+                    message: "hotel modified"
+                })
+            } else {
+                res.status(200).json({
+                    success: false,
+                    message: "hotel not finded"
+                })
+            }
+
+        } catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
     // destroy: async (req,res)=>{
     //     try{
 
