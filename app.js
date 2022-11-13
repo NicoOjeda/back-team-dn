@@ -13,7 +13,7 @@ require('./config/database')
 
 var indexRouter = require('./routes/index');
 
-var indexRouter = require('./routes/index');
+
 
 const cors = require('cors');
 var app = express();
