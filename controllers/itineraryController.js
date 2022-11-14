@@ -47,7 +47,18 @@ const createItinerary = {
     } 
 },
   readOne: async (req, res) => {
-    let { id } =  req.params 
+  
+    if(req.query.citiId){
+      query = { citiId:req.query.citiId }
+    }
+    if(req.query.name){
+        query = {name:  {  $regex : req.query.name }}
+    }
+    if(req.query.order){
+        order = { name:  req.query.order}
+    }
+
+    
      try{
          let readOne2 = await Itinerary.find({ _id: id }).populate("userId",{name:1,photo:1})
          res.status(200).json( {

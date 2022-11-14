@@ -8,5 +8,5 @@ router.put('/:id',update);
 router.delete('/:id', destroy)
 // router.get('/:id', readOne) 
 
-// router.get('/?cityId=id',readOne);
+router.get('/?cityId=id',readOne);
 module.exports = router;
