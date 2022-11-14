@@ -66,7 +66,39 @@ const createItinerary = {
       });
     }
   },
+
+  destroy: async(req, res) => {
+    let { id } = req.params
+    try {
+      let itUp = await Itinerary.findOneAndDelete({ _id: id })
+  
+      if (itUp) {
+  
+        res.status(200).json({
+          id: itUp._id,
+          success: true,
+          messagge: "the city was successfully removed."
+        })
+      } else {
+        res.status(404).json({
+          success: false,
+          messagge: "the city no found"
+        })
+      }
+    } catch(error){
+      res.status(400).json({
+        success: false,
+        message: error.message
+  
+      }
+  
+  
+  
+      )
+    }
+  },
   
 }
+
 
   module.exports = createItinerary;
