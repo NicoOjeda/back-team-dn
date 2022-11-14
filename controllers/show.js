@@ -45,6 +45,32 @@ const controllerShow = {
             })
         }
 
+    },
+    destroy : async(req,res)=>{
+        
+        let { id } = req.params
+
+        try{
+            let oneD = await Show.findOneAndDelete({_id:id})
+            if(oneD){
+                res.status(200).json({
+                    id: oneD._id,
+                    success: true,
+                    message: "show deleted"
+                })
+            } else {
+                res.status(404).json({
+                    success: true,
+                    message: "show not finded"
+                })
+            }
+        }catch (error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+
     }
 }
 
