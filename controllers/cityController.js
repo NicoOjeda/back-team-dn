@@ -18,34 +18,30 @@ const cityCreated = {
     }
   },
   read: async (req, res) => {
-    console.log('REQ.PARAMS')
-    console.log(req.params)
-    console.log('REQ.QUERY')
-    console.log(req.query)
-    console.log('REQ.BODY')
-    console.log(req.body)
-    try {
-      let cities = await City.find()
-      res.status(200).json({
-        response: cities,
-        success: true,
-        messagge: "cities found successfully "
+    let query = {}
+    let order = {}
 
-      })
-    } catch (error) {
-      res.status(400).json({
-        success: false,
-        messagge: error.messagge
-
-      })
-
+    if(req.query.name){
+        query = {name:  {  $regex : req.query.name }}
     }
+    if(req.query.order){
+        order = { name:  req.query.order}
+    }
+    try{
+        let cities = await City.find(query).sort(order)
+        res.status(200).json( {
+            response: cities,
+            success: true,
+            message: "all hotels finded"
+        })
+    } catch(error){
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    } 
+},
 
-
-
-
-
-  },
 
 
 
