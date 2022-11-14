@@ -19,7 +19,7 @@ router.use('/shows', show)
 let userRoute = require('./userRoute')
 
 let cityRoute = require('./cityRoute')
-
+const cityCreated = require('../controllers/cityController')
 let itinerariesRoute = require('./itinerariesRoute')
 
 const middlewareTime = (req,res, next) => {
