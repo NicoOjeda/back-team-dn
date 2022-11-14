@@ -32,20 +32,31 @@ const cityCreated = {
         res.status(200).json( {
             response: cities,
             success: true,
-            message: "all hotels finded"
+            message: "all cities finded"
         })
     } catch(error){
         res.status(400).json({
             success: false,
-            message: error.message
+            message: "No Found "
         })
     } 
 },
-
-
-
-
-
+readOne: async (req, res) => {
+ let { id } =  req.params 
+  try{
+      let city = await City.findOne({ _id: id }).populate("userId",{name:1,photo:1})
+      res.status(200).json( {
+          response: city,
+          success: true,
+          message: "City found"
+      })
+  } catch(error){
+      res.status(400).json({
+          success: false,
+          message: error.message
+      })
+  } 
+},
   update: async (req, res) => {
     let { id } = req.params
 
@@ -76,7 +87,6 @@ const cityCreated = {
       )
     }
   },
-
   destroy: async(req, res) => {
     let { id } = req.params
     try {

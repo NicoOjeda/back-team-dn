@@ -2,6 +2,7 @@ const Itinerary = require("../models/Itinerary");
 const createItinerary = {
 
   create: async (req, res) => {
+
     try {
       let new_it = await (await Itinerary.create(req.body)).save();
       res.status(201).json({
@@ -17,28 +18,61 @@ const createItinerary = {
     }
   },
   read: async (req, res) => {
-    const {id} = req.params
-    try {
-      let itinerary = Itinerary.findOneAnd({_id:id})
-      if (itinerary) {
-        res.status(200).json({
-          response: itinerary,
-          success: true,
-          messagge: "itinerary found successfully ",
-        });
-      }else{
-        res.status(404).json({
-          success: false,
-          messagge: "could´t find eitinerary"
-        });
-      }
-    } catch (error) {
-      res.status(400).json({
-        success: false,
-        messagge: "error"
-      });
+    let query = {}
+    let order = {}
+    console.log(req.query)
+    if(req.query.citiId){
+      query = { citiId:req.query.citiId }
     }
-  },
+    if(req.query.name){
+        query = {name:  {  $regex : req.query.name }}
+    }
+    if(req.query.order){
+        order = { name:  req.query.order}
+    }
+  
+    try{
+        let itineraries = await Itinerary.find(query).sort(order)
+     
+        res.status(200).json( {
+            response: itineraries,
+            success: true,
+            message: "all itineraries finded"
+        })
+    } catch(error){
+        res.status(400).json({
+            success: false,
+            message: "No Found "
+        })
+    } 
+},
+  readOne: async (req, res) => {
+  
+    if(req.query.citiId){
+      query = { citiId:req.query.citiId }
+    }
+    if(req.query.name){
+        query = {name:  {  $regex : req.query.name }}
+    }
+    if(req.query.order){
+        order = { name:  req.query.order}
+    }
+
+    
+     try{
+         let readOne2 = await Itinerary.find({ _id: id }).populate("userId",{name:1,photo:1})
+         res.status(200).json( {
+             response: readOne2,
+             success: true,
+             message: " itinerary found"
+         })
+     } catch(error){
+         res.status(400).json({
+             success: false,
+             message: "no found"
+         })
+     } 
+   },
 
   update: async (req, res) => {
     let { id } = req.params;
