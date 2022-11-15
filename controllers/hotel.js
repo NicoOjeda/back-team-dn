@@ -17,7 +17,7 @@ const controller = {
             })
         }
     },
-    read: async (req,res)=>{
+    all: async (req,res)=>{
         let query = {}
         let order = {}
 
@@ -32,7 +32,7 @@ const controller = {
             res.status(200).json( {
                 response: all,
                 success: true,
-                message: "all hotels finded"
+                message: "all hotels found"
             })
         } catch(error){
             res.status(400).json({
@@ -56,7 +56,7 @@ const controller = {
             } else {
                 res.status(404).json({
                     success: false,
-                    message: "hotel not finded"
+                    message: "hotel not found"
                 })
             }
 
@@ -81,12 +81,31 @@ const controller = {
             } else{
                 res.status(404).json({
                     success: false,
-                    message: "hotel not finded"
+                    message: "hotel not found"
                 })
             }
 
         } 
         catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
+    read: async (req,res)=>{
+
+        let {id} = req.params
+
+        try{
+            let oner = await Hotel.find({_id : id})
+            .populate("userId", ["name","photo"])
+                res.status(200).json({
+                    response: oner,
+                    success: true,
+                    message: "hotel found"
+                })
+        } catch(error){
             res.status(400).json({
                 success: false,
                 message: error.message
