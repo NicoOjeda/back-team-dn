@@ -35,7 +35,7 @@ const controllerShow = {
             } else {
                 res.status(404).json({
                     success: true,
-                    message: "show not finded"
+                    message: "show not found"
                 })
             }
         }catch (error){
@@ -61,7 +61,7 @@ const controllerShow = {
             } else {
                 res.status(404).json({
                     success: true,
-                    message: "show not finded"
+                    message: "show not found"
                 })
             }
         }catch (error){
@@ -71,7 +71,34 @@ const controllerShow = {
             })
         }
 
-    }
+    },
+
+    read: async (req,res)=>{
+
+        // let {id} = req.params
+        let {query} = req
+
+        // if(query.req.hotelId){
+        //     query = req.query.hotelId
+        // }
+        
+        try{
+            let oner = await Show.find( query)
+            .populate("userId", ["name","lastName", "photo"])
+                res.status(200).json({
+                    response: oner,
+                    success: true,
+                    message: "hotel found"
+                })
+        } catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
+
+
 }
 
 module.exports = controllerShow
