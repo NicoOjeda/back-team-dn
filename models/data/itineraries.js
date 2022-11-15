@@ -2,7 +2,7 @@ let itineraries = [
     {
         
         "citiId": "636d52b11b58293a27c69f22",
-        "name": "🏮Samurai Museum🏮",
+        "name": "Samurai Museum",
         "photo":
           "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/b4/48/29/samurai-museum.jpg?w=1200&h=-1&s=1,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/9c/b9/6a/caption.jpg?w=1200&h=-1&s=1,https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/05/f3/c5/20170726-142040-largejpg.jpg?w=1200&h=-1&s=1",
         "description":
