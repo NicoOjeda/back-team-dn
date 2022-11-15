@@ -24,7 +24,7 @@ const cityCreated = {
     let order = {}
     console.log(req.query)
     if(req.query.name){
-      query = {name:  {  $regex : req.query.name }}
+      query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name }}
     }
     if(req.query.continent){
       query = { 
