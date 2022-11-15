@@ -2,7 +2,9 @@ const City = require('../models/City')
 
 
 const cityCreated = {
+
   create: async (req, res) => {
+     
     try {
       let new_city = await City.create(req.body)
       res.status(201).json({
@@ -20,15 +22,18 @@ const cityCreated = {
   read: async (req, res) => {
     let query = {}
     let order = {}
-
+    console.log(req.query)
     if(req.query.name){
-        query = {name:  {  $regex : req.query.name }}
+      query = {name:  {  $regex : req.query.name }}
     }
-    if(req.query.order){
-        order = { name:  req.query.order}
+    if(req.query.continent){
+      query = { 
+        ...query,
+      continent  : req.query.continent }
     }
+ 
     try{
-        let cities = await City.find(query).sort(order)
+      let cities = await City.find(query)
         res.status(200).json( {
             response: cities,
             success: true,
@@ -41,6 +46,10 @@ const cityCreated = {
         })
     } 
 },
+
+
+
+
 readOne: async (req, res) => {
  let { id } =  req.params 
   try{
