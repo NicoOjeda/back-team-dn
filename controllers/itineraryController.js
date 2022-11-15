@@ -19,20 +19,14 @@ const createItinerary = {
   },
   read: async (req, res) => {
     let query = {}
-    let order = {}
+  
     console.log(req.query)
     if(req.query.citiId){
       query = { citiId:req.query.citiId }
     }
-    if(req.query.name){
-        query = {name:  {  $regex : req.query.name }}
-    }
-    if(req.query.order){
-        order = { name:  req.query.order}
-    }
-  
+
     try{
-        let itineraries = await Itinerary.find(query).sort(order)
+        let itineraries = await Itinerary.find(query)
      
         res.status(200).json( {
             response: itineraries,
@@ -46,33 +40,6 @@ const createItinerary = {
         })
     } 
 },
-  readOne: async (req, res) => {
-  
-    if(req.query.citiId){
-      query = { citiId:req.query.citiId }
-    }
-    if(req.query.name){
-        query = {name:  {  $regex : req.query.name }}
-    }
-    if(req.query.order){
-        order = { name:  req.query.order}
-    }
-
-    
-     try{
-         let readOne2 = await Itinerary.find({ _id: id }).populate("userId",{name:1,photo:1})
-         res.status(200).json( {
-             response: readOne2,
-             success: true,
-             message: " itinerary found"
-         })
-     } catch(error){
-         res.status(400).json({
-             success: false,
-             message: "no found"
-         })
-     } 
-   },
 
   update: async (req, res) => {
     let { id } = req.params;
