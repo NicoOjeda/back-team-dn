@@ -18,15 +18,15 @@ const createItinerary = {
     }
   },
   read: async (req, res) => {
-    let query = {}
+    let {query} = req
   
-    console.log(req.query)
     if(req.query.citiId){
       query = { citiId:req.query.citiId }
+      console.log(req.query)
     }
 
     try{
-        let itineraries = await Itinerary.find(query)
+        let itineraries = await Itinerary.find(query).populate("userId", ["name", "photo"])
      
         res.status(200).json( {
             response: itineraries,
