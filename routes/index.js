@@ -21,5 +21,4 @@ router.use("/cities", middlewareTime, cityRoute);
 router.use("/itineraries", itinerariesRoute);
 router.use("/hotels", hotel);
 router.use("/shows", show);
-
 module.exports = router;

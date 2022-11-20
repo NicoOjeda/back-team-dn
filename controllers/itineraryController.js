@@ -41,6 +41,67 @@ const createItinerary = {
     } 
 },
 
+
+readOne: async (req, res,next) => {
+  let {query} = req
+  let order = {}
+  console.log(req.query)
+
+  if(req.query.citiId){
+    query = { citiId:req.query.citiId }
+    console.log(req.query)
+  }
+  if (req.query.Itinerary) {
+    query = {
+        ...query,
+        Itinerary: req.query.Itinerary
+    }
+}
+if (req.query.name) {
+  query = {
+      ...query,
+      name: req.query.name
+  }
+}
+if (req.query.order) {
+  order = { name: req.query.order }
+}
+
+
+try {
+  let todos = await citiId.find(query)
+      .sort(order)
+      .populate({ path: 'name', populate: 'photo' })
+  if (todos) {
+      res.status(200).json({
+          response: todos,
+          success: true,
+          message: "Encontrado"
+      })
+  } else {
+      res.status(404).json({
+          success: false,
+          message: "No Found"
+      })
+  }            
+} catch(error) {
+  next(error)
+}        
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   update: async (req, res) => {
     let { id } = req.params;
   
