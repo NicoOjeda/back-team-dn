@@ -21,19 +21,27 @@ const controller = {
         let query = {}
         let order = {}
 
-        if(req.query.name){
-            query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name  }}
-        }
-        if(req.query.order){
-            order = { name:  req.query.order}
-        }
         try{
+            if(req.query.name){
+                query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name  }}
+            }
+            if(req.query.order){
+                order = { name:  req.query.order}
+            }
             let all = await Hotel.find(query).sort(order)
-            res.status(200).json( {
-                response: all,
-                success: true,
-                message: "all hotels found"
-            })
+
+            if(!all.length ==0){
+                res.status(200).json( {
+                    response: all,
+                    success: true,
+                    message: "all hotels found"
+                })
+            } else {
+                res.status(404).json({
+                    success: false,
+                    message: "hotel not found"
+                })
+            }
         } catch(error){
             res.status(400).json({
                 success: false,
