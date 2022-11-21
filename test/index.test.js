@@ -6,12 +6,12 @@ const request = require("supertest");
 describe("GET /api/itineraries", function () {
   // it - test - cases
 
-  it("array traido", function () {
+  it(" [] ", function () {
 
     const idItineraries = "636d52b11b58293a27c69f1f";
 
     request(app)
-        .get("/api/itineraries" + idItineraries)
+        .get("/api/itineraries/" + idItineraries)
         .expect((response) => {
             assert.isArray(response.body.response,1,"array"," al fiin");
       })
@@ -23,25 +23,26 @@ describe("GET /api/itineraries", function () {
       });
   });
 
-  // it('Deberia traerme una sola comida', function(done) {
-
-  //   const idComida = '636d5775c67698ccc47127d9';
-    
-  //   request(app)
-  //       .get("/api/itineraries" + idItineraries)
-  //       .expect(response => {
-  //           assert.lengthOf(response.body.response, 1)
-  //       })
-  //       .end(function(err, res) {
-  //           if(err){
-  //               return done(err);
-  //           }
-
-  //           done();
-  //       })
-
-
-      // })
 
 
 });
+describe('post /api/cities', function(done){
+  it('must respond with 404 status code', function(done){
+      request(app)
+      .post('/api/cities')
+      .send({})
+      .expect((response) => {
+        assert.equal(response.status,400);
+  })
+      .end(function (err,res){
+          console.log(err);
+          if(err) return done(err);
+          return done()
+      })
+  })
+
+  
+
+})
+
+
