@@ -84,7 +84,7 @@ const controllerShow = {
         
         try{
             let oner = await Show.find( query)
-            // .populate("userId", ["name","lastName", "photo"])
+            .populate("userId", ["name","lastName", "photo"])
                 res.status(200).json({
                     response: oner,
                     success: true,
