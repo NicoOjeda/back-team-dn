@@ -10,7 +10,7 @@ const schema = joi.object({
     "string.min": "minimo tiene q tener 3 letras",
     "string.max": "maximo tiene q tener 23 letras",
   }),
-  population: joi.number().required().min(4).max(50).messages({
+  population: joi.number().required().min(4).messages({
     "any.require": "El campo es requerido, por favor ingresalo",
     "string.empty": "no pusiste nada en el campo nombre",
     "string.min": "minimo tiene q tener 4 numeros",
