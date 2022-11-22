@@ -21,11 +21,16 @@ const controller = {
     all: async (req,res)=>{
         let query = {}
         let order = {}
-
+        
         try{
             if(req.query.name){
                 query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name  }}
             }
+            if(req.query.userId){
+                query =  
+                {...query,
+                userId :req.query.userId}}
+            
             if(req.query.order){
                 order = { name:  req.query.order}
             }
@@ -122,6 +127,29 @@ const controller = {
             })
         }
     },
+    // readAdm: async (req,res)=>{
+
+    //     let query = {}
+
+    //     if (req.query.userId){
+    //         query = req.query.userId
+    //     }
+
+    //     try{
+    //         let adm = await Hotel.find(query)
+    //             res.status(200).json({
+    //                 response: adm,
+    //                 success: true,
+    //                 message: "hotel found"
+    //             })
+    //     } catch(error){
+    //         res.status(400).json({
+    //             success: false,
+    //             message: error.message
+    //         })
+    //     }
+    // },
+    
 }
 
 module.exports = controller
