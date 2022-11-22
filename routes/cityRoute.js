@@ -1,8 +1,11 @@
 let router = require('express').Router();
 let { create ,read, update,destroy,readOne} = require('../controllers/cityController')
+const schema = require ('../schemas/city')
+const validator = require('../middlewares/validator')
 
 
-router.post('/', create );
+
+router.post('/',validator(schema) ,create );
 router.put('/:id', update);
 router.get('/', read);
 router.delete('/destroy/:id',destroy);

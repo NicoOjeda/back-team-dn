@@ -53,17 +53,27 @@ readOne: async (req, res) => {
  let { id } =  req.params 
   try{
       let city = await City.findOne({ _id: id }).populate("userId",{name:1,photo:1})
-      res.status(200).json( {
+      if (city){
+         res.status(200).json( {
           response: city,
           success: true,
           message: "City found"
       })
+    }else{
+      res.status(404).json({
+        success: false,
+        message: error.message
+      })
+    
+    }
+    
   } catch(error){
       res.status(400).json({
           success: false,
           message: error.message
       })
-  } 
+   
+  }
 },
   update: async (req, res) => {
     let { id } = req.params
