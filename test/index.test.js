@@ -46,3 +46,39 @@ describe('post /api/cities', function(done){
 })
 
 
+describe('post /api/cities', function(done){
+  it('escriba su nombre mediante letras', function(done){
+      request(app)
+      .post('/api/cities')
+      .send({})
+      .expect((response) => {
+        assert.equal(response.status,400);
+  })
+      .end(function (err,res){
+          console.log(err);
+          if(err) return done(err);
+          return done()
+      })
+  })
+
+  
+
+})
+
+
+describe('POST /api/cities', function(done){
+  it('must send a text in name field',function(done){
+      request(app)
+          .post('/api/cities/')
+          .send({})
+          .expect(response => {
+              assert.isString(response.body.capacity, 'Only Text')
+          })
+          .end(function(err,res){
+              if(err){
+                  return done(err);
+              }
+             return done()
+      })
+  })
+})
