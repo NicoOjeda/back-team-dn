@@ -24,7 +24,10 @@ const createItinerary = {
       query = { citiId:req.query.citiId }
       console.log(req.query)
     }
-
+    if(req.query.userId){
+      query =
+      {...query,
+      userId :req.query.userId}}
     try{
         let itineraries = await Itinerary.find(query).populate("userId", ["name", "photo"])
      
