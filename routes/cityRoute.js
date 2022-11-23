@@ -6,9 +6,9 @@ const validator = require('../middlewares/validator')
 
 
 router.post('/',validator(schema) ,create );
-router.put('/:id', update);
+router.patch('/:id', update);
 router.get('/', read);
-router.delete('/destroy/:id',destroy);
+router.delete('/:id',destroy);
 router.get('/:id', readOne);
 
   

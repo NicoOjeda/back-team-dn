@@ -28,6 +28,7 @@ const cityCreated = {
 
 
     
+
     if(req.query.continent){
       query = { 
         ...query,
