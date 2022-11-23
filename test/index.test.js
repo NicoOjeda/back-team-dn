@@ -46,3 +46,24 @@ describe('post /api/cities', function(done){
 })
 
 
+
+describe('post /api/cities', function(done){
+  it('escriba su nombre mediante letras', function(done){
+      request(app)
+      .post('/api/cities')
+      .send({})
+      .expect((response) => {
+        assert.equal(response.status,400);
+  })
+      .end(function (err,res){
+          console.log(err);
+          if(err) return done(err);
+          return done()
+      })
+  })
+
+  
+
+})
+
+
