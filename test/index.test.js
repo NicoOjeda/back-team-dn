@@ -66,19 +66,3 @@ describe('post /api/cities', function(done){
 })
 
 
-describe('POST /api/cities', function(done){
-  it('must send a text in name field',function(done){
-      request(app)
-          .post('/api/cities/')
-          .send({})
-          .expect(response => {
-              assert.isString(response.body.capacity, 'Only Text')
-          })
-          .end(function(err,res){
-              if(err){
-                  return done(err);
-              }
-             return done()
-      })
-  })
-})
