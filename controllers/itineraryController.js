@@ -28,6 +28,7 @@ const createItinerary = {
       query =
       {...query,
       userId :req.query.userId}}
+      
     try{
         let itineraries = await Itinerary.find(query).populate("userId", ["name", "photo"])
      
