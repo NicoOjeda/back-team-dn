@@ -4,7 +4,7 @@ const { create, read , update, destroy, readOne  } = require('../controllers/iti
 
 router.post('/', create );
 router.get('/',read);
-router.put('/:id',update);
+router.patch('/:id', update);
 router.delete('/:id', destroy)
 // router.get('/:id', readOne) 
 

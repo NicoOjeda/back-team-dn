@@ -21,11 +21,14 @@ const cityCreated = {
   },
   read: async (req, res) => {
     let query = {}
-    let order = {}
     console.log(req.query)
     if(req.query.name){
       query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name }}
     }
+
+
+    
+
     if(req.query.continent){
       query = { 
         ...query,
@@ -54,17 +57,27 @@ readOne: async (req, res) => {
  let { id } =  req.params 
   try{
       let city = await City.findOne({ _id: id }).populate("userId",{name:1,photo:1})
-      res.status(200).json( {
+      if (city){
+         res.status(200).json( {
           response: city,
           success: true,
           message: "City found"
       })
+    }else{
+      res.status(404).json({
+        success: false,
+        message: error.message
+      })
+    
+    }
+    
   } catch(error){
       res.status(400).json({
           success: false,
           message: error.message
       })
-  } 
+   
+  }
 },
   update: async (req, res) => {
     let { id } = req.params
