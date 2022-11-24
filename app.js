@@ -6,11 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('./config/database')
 
-// const errorHandler = require('./middlewares/errorHandler')
-
-
-
-
+const errorHandler = require('./middlewares/errorHandler')
 var indexRouter = require('./routes/index');
 
 
@@ -36,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(middlewareTime)
 // app.use(errorHandler.notFound)
 app.use(cors());
-
+app.use
 
 
 
@@ -44,8 +40,8 @@ app.use('/api', indexRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {   
-});
+// app.use(function(req, res, next) {   
+// });
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
