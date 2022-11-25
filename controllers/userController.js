@@ -5,7 +5,8 @@ const accountVerificationEmail = require("./accountVerificationEmail");
 const { userSignedUpResponse, userNotFoundResponse } = require("../config/responses");
 const createdUser = {
   signup: async (req, res,next) => {
-    let { name, lastName, role, photo, age, email, password } = req.body;
+    let { name, lastName, photo, age, email, password } = req.body;
+    let role = "user";
     let verified = false;
     let logged = false;
     let code = crypto.randomBytes(10).toString("hex");
@@ -40,13 +41,12 @@ const createdUser = {
     try{
 
       let user = await User.findOneAndUpdate(
-        { codigo: code },
+        { code: code },
         { verified: true },
         { new: true }
       )
         if (user) {
           return res.redirect('http://localhost:3000/signin')
-
 
         }
         return userNotFoundResponse(req,res)
