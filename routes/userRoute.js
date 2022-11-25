@@ -10,7 +10,7 @@ const schema = require("../schemas/user")
 //primero valido con joi
 // luego verifico si la cuenta existe
 // y si todo va bien, creo el usuario
-router.post('/signup',validator(schema), signup)
+router.post('/signup',validator(schema),accountExists, signup)
 router.get('/verify/:code',verified )
 
 // validator(schema),accountExists,
