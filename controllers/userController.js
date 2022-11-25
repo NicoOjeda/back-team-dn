@@ -45,9 +45,10 @@ const createdUser = {
         { new: true }
       )
         if (user) {
-          return res.redirect('http://www.google.com.ar')
+          return res.redirect('http://localhost:3000/signin')
 
 
+          
         }
         return userNotFoundResponse(req,res)
     }catch (error){

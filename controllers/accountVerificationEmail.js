@@ -44,12 +44,15 @@ function getEmailBody({mail, host, code}) {
     return `
         <div>
             <h1>Welcome, ${mail}</h1>            
-            <a href="${host}auth/verify/${code}">
+            <a href="${host}/auth/verify/${code}">
                 Verify my account.
             </a>
         </div>
-    `
-}
+
+        `
+
+
+    }
 // defino una ultima funcion q junta todos los pasos anteriores
 // esta fx se necesita exportar y utilizar en el metodo signup
 //para efectivamente enviar el correo de verificacion
