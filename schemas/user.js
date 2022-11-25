@@ -7,14 +7,17 @@ const schema = joi.object({
 
     photo : joi.string().uri().required().messages({"string.empty" : "photo is required", "string.uri" : "photo must be a valid uri"}),
     
-    age:joi.number().min(100).required().messages({"number.base" : "Number is required"}),
+    age:joi.number().min(18).required().messages({"number.base" : "Number is required"}),
 
-    email:joi.string().uri().required(),
+    email:joi.string().uri().required().email({minDomainSegments: 2}).messages({
+        'any.required': 'MAIL_REQUIRED',
+        'string.empty': 'MAIL_REQUIRED',
+        'string.email': 'INVALID_MAIL'       }),
 
     password:joi.string().uri().required(),
 
   
 })
    
-const User = mongoose.model('user', schema) 
+
 module.exports = schema
