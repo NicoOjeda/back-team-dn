@@ -26,6 +26,7 @@ const createdUser = {
         code,
         logged
       });
+      console.log(res.body)
       //envia mail de verificacion (con transportador)
       await accountVerificationEmail(email, code);
       return userSignedUpResponse(req, res);
