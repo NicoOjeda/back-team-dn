@@ -12,8 +12,6 @@ const schema = joi.object({
 
     password:joi.string().required(),
 
-  
-})
-   
 
+})
 module.exports = schema

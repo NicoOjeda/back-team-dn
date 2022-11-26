@@ -9,7 +9,9 @@ const {invalidCredentialsResponse} = require('../config/responses')
 const createdUser = {
   signup: async (req, res,next) => {
     let { name, lastName, photo, age, email, password } = req.body;
-    let role= "user";
+
+    let role = "user";
+
     let verified = false;
     let logged = false;
     let code = crypto.randomBytes(10).toString("hex");
@@ -29,6 +31,7 @@ const createdUser = {
         code,
         logged
       });
+      console.log(res.body)
       //envia mail de verificacion (con transportador)
       await accountVerificationEmail(email, code);
       return userSignedUpResponse(req, res);
@@ -52,7 +55,6 @@ const createdUser = {
           return res.redirect('http://localhost:3000/signin')
 
 
-          
         }
         return userNotFoundResponse(req,res)
     }catch (error){

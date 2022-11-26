@@ -15,7 +15,7 @@ const mustSignIn = require('../middlewares/mustSignIn')
 //primero valido con joi
 // luego verifico si la cuenta existe
 // y si todo va bien, creo el usuario
-router.post('/signup',validator(schema), signup)
+router.post('/signup',validator(schema),accountExists, signup)
 router.get('/verify/:code',verified )
 router.post('/signin',validator(signInSchema), accountExists, accountHasBeenVerified, signin )
 router.post('/token', passport.authenticate('jwt',{session:false}), mustSignIn, logInToken )
@@ -25,3 +25,4 @@ router.post('/token', passport.authenticate('jwt',{session:false}), mustSignIn, 
 module.exports = router
 
 
+     
