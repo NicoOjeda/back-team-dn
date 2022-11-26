@@ -48,8 +48,11 @@ function getEmailBody({mail, host, code}) {
                 Verify my account.
             </a>
         </div>
-    `
-}
+
+        `
+
+
+    }
 // defino una ultima funcion q junta todos los pasos anteriores
 // esta fx se necesita exportar y utilizar en el metodo signup
 //para efectivamente enviar el correo de verificacion
