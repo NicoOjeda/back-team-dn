@@ -57,7 +57,19 @@ const createdUser = {
     }
   },
 
-
+  signout: async (req, res, next) => {
+    const { email } = req.user 
+    try {
+    await User.findOneAndUpdate(
+      { email },
+      { logged: false },
+      { new: true }
+    )
+      return userSignedOutResponse(req,res)
+  } catch(error) {
+    next(error)
+  }
+  }
 
 
 
