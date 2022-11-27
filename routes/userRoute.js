@@ -12,6 +12,7 @@ const schema = require("../schemas/user")
 // y si todo va bien, creo el usuario
 router.post('/signup',validator(schema),accountExists, signup)
 router.get('/verify/:code',verified )
+router.put("/sign-out",passport.authenticate('jwt',{session:false}), signout )
 
 // validator(schema),accountExists,
 module.exports = router
