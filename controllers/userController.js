@@ -105,20 +105,50 @@ console.log(password);
     } catch(error){
       next(error)
     }
+  },
 
-  }
+readUser: async (req,res)=>{
 
+        let {id} = req.params
+        try{
+            let oneUser = await User.findOne( {_id:id})
+                res.status(200).json({
+                    response: oneUser,
+                    success: true,
+                    message: "user found"
+                })
+        } catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+        }
+    },
 
+    updateUser: async (req,res)=>{
 
+      let {id} = req.params
+      try{
+          let updateUser = await User.findOneAndUpdate( {_id:id}, req.body ,  {new: true })
+          if(updateUser){
+            res.status(200).json({
+                success: true,
+                message: "user modified"
 
-
-
-
-
-
-
-
-
+            })
+        } else {
+            res.status(404).json({
+                success: true,
+                message: "user found"
+            })
+        }
+    }catch (error){
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+  },
 
 
 };
