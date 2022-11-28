@@ -67,3 +67,24 @@ describe('post /api/cities', function(done){
 })
 
 
+describe('delete /api/shows/:id', function(done){
+  it('must delete a show respond with 200  status code', function(done){
+    request(app)
+    .delete('/api/cities/636d52b11b58293a27c69f24')
+    .expect(200)
+    .end(function (err,res){
+      console.log(err)
+      if(err) return done(err);
+      return done()
+
+
+    })
+
+
+
+  })
+
+
+
+
+})
