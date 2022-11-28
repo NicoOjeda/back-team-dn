@@ -60,3 +60,20 @@ describe('POST /api/hotels', function(done){
         })
     })
 })
+
+describe('delete /api/shows/:id', function(done){
+    it('must delete a show respond with 200 status code', function(done){
+        request(app)
+        .delete('/api/shows/63849372f25739a3fcf6673f')
+        .expect(200)
+        .end(function (err,res){
+            console.log(err);
+            if(err) return done(err);
+            return done()
+        })
+    })
+
+    
+
+})
+
