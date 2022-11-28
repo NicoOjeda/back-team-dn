@@ -71,9 +71,9 @@ console.log(password);
       const passwordVerify = bcryptjs.compareSync(password,user.password)
 
       if (passwordVerify){
-        await User.findOneAndUpdate({_id : user.id},{online: true}, {new: true})
+        await User.findOneAndUpdate({_id : user.id},{logged: true}, {new: true})
         const token = jwt.sign(
-          {id:user._id, name: user.name, photo: user.photo, online: user.online},
+          {id:user._id, name: user.name, photo: user.photo, logged: user.logged},
           process.env.KEY_JWT,
           {expiresIn: 60 * 60 * 24}
         )
@@ -96,7 +96,10 @@ console.log(password);
         response: {
           user:{
             name : user.name,
-            photo: user.photo
+            photo: user.photo,
+            role: user.role,
+            logged: user.logged,
+            _id: user.id
           },
         },
         success: true,
