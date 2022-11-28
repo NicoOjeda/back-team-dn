@@ -99,7 +99,7 @@ console.log(password);
             photo: user.photo,
             id:user.id,
             role: user.role
-
+            
           },
         },
         success: true,
