@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcryptjs = require("bcryptjs"); //d esta libreria vamos a utilizar el metodo hashSync para encriptar la contraseña
 const crypto = require("crypto"); //d este modulo vamos a requerir el metodo randomBytes
 const accountVerificationEmail = require("./accountVerificationEmail");
-const { userSignedUpResponse, userNotFoundResponse } = require("../config/responses");
+const { userSignedUpResponse, userNotFoundResponse, userSignedOutResponse } = require("../config/responses");
 const jwt = require('jsonwebtoken')
 const {invalidCredentialsResponse} = require('../config/responses')
 
@@ -96,7 +96,10 @@ console.log(password);
         response: {
           user:{
             name : user.name,
-            photo: user.photo
+            photo: user.photo,
+            id:user.id,
+            role: user.role
+
           },
         },
         success: true,
@@ -149,6 +152,20 @@ readUser: async (req,res)=>{
         })
     }
   },
+
+  signout: async (req, res, next) => {
+    const { email } = req.user 
+    try {
+    await User.findOneAndUpdate(
+      { email },
+      { logged: false },
+      { new: true }
+    )
+      return userSignedOutResponse(req,res)
+  } catch(error) {
+    next(error)
+  }
+  }
 
 
 };
