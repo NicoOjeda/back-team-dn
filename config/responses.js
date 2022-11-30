@@ -47,6 +47,13 @@ function verifyResponse(req,res) {
     })
 }
 
+const idnotauthorized = (req, res) => {
+    return res.status(401).json({
+        success: false,
+        message: 'user id not authorized'
+    })
+}
+
 module.exports = {
     userSignedUpResponse,
     userExistsResponse,
@@ -54,5 +61,6 @@ module.exports = {
     userSignedOutResponse,
     mustSignInResponse,
     invalidCredentialsResponse,
-    verifyResponse
+    verifyResponse,
+    idnotauthorized
 }
