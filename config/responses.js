@@ -47,6 +47,14 @@ function verifyResponse(req,res) {
     })
 }
 
+const usernotauthorized = (req, res) => {
+    return res.status(401).json({
+        success: false,
+        message: 'city deleted successfuly'
+    })
+}
+
+
 module.exports = {
     userSignedUpResponse,
     userExistsResponse,
@@ -54,5 +62,6 @@ module.exports = {
     userSignedOutResponse,
     mustSignInResponse,
     invalidCredentialsResponse,
-    verifyResponse
+    verifyResponse,
+    usernotauthorized
 }
