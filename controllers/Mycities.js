@@ -7,6 +7,7 @@ const controller = {
         if(req.query.userId){
             query = {userId: req.query.userId};
         }
+        
         try{
             let cities = await City.find(query)
             if(cities){

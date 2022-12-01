@@ -7,6 +7,7 @@ const usernotauthorized = require('../middlewares/cityAuth')
 const {readMyCities} = require('../controllers/Mycities')
 
 
+
 router.post('/',validator(schema) ,create );
 router.patch('/:id',passport.authenticate('jwt',{session:false}), usernotauthorized,update);
 router.get('/', read);
