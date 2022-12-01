@@ -30,7 +30,9 @@ const createItinerary = {
       userId :req.query.userId}}
       
     try{
-        let itineraries = await Itinerary.find(query).populate("userId", ["name", "photo"])
+        let itineraries = await Itinerary.find(query)
+        .populate("userId", ["name", "photo"])
+        .populate("citiId", ["name", "photo"])
      
         res.status(200).json( {
             response: itineraries,
@@ -44,8 +46,6 @@ const createItinerary = {
         })
     } 
 },
-
-
 readOne: async (req, res,next) => {
   let {query} = req
   let order = {}
@@ -92,24 +92,11 @@ try {
   next(error)
 }        
 },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   update: async (req, res) => {
     let { id } = req.params;
   
     try {
+      console.log(req.params.id , req.body)
       let itineraryUpdate = await Itinerary.findOneAndUpdate({ _id: id }, req.body, {
         new: true,
       });

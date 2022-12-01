@@ -47,6 +47,7 @@ function verifyResponse(req,res) {
     })
 }
 
+
 const usernotauthorized = (req, res) => {
     return res.status(401).json({
         success: false,
@@ -62,6 +63,14 @@ const cityDelete = (req, res) => {
 }
 
 
+
+const idnotauthorized = (req, res) => {
+    return res.status(401).json({
+        success: false,
+        message: 'user id not authorized'
+    })
+}
+
 module.exports = {
     userSignedUpResponse,
     userExistsResponse,
@@ -71,6 +80,7 @@ module.exports = {
     invalidCredentialsResponse,
     verifyResponse,
     usernotauthorized,
-    cityDelete
-    
+    cityDelete,
+    idnotauthorized
+
 }
