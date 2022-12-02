@@ -8,7 +8,7 @@ const controller = {
 
         try {
             let newComment = await Comment.create({showId, userId, comment, date})
-            res.status(200).json( {
+            res.status(201).json( {
                 response: newComment,
                 success: true,
                 message: "new comment create"
@@ -54,8 +54,55 @@ const controller = {
             })
         } 
     
-    }
+    },
+    update: async (req,res)=>{
+       let {id} = req.params
 
+        try {
+            let editComment = await Comment.findOneAndUpdate({_id : id}, req.body, {new:true})
+            if(editComment){
+                res.status(200).json( {
+                    id: editComment._id,
+                    success: true,
+                    message: "comment edited"
+                })
+            } else{
+                res.status(404).json( {
+                    success: false,
+                    message: "comment not founded"
+                })
+            }
+        } catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+    }
+},
+    destroy: async (req,res)=>{
+        let {id} = req.params
+
+        try {
+            let deleteComment = await Comment.findOneAndDelete({_id : id})
+            if(deleteComment){
+                res.status(200).json( {
+                    id: deleteComment._id,
+                    success: true,
+                    message: "comment deleted"
+                })
+            } else{
+                res.status(404).json( {
+                    success: false,
+                    message: "comment not founded"
+                })
+            }
+        } catch(error){
+            res.status(400).json({
+                success: false,
+                message: error.message
+            })
+    }
+}
 
 }
 
