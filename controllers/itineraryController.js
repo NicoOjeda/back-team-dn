@@ -16,8 +16,8 @@ const createItinerary = {
     }
   },
   read: async (req, res) => {
-    let { query } = req;
-
+    let  query  = {}
+    
     if (req.query.citiId) {
       query = { citiId: req.query.citiId };
       console.log(req.query);

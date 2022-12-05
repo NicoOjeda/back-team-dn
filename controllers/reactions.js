@@ -131,6 +131,23 @@ const controller = {
       });
     }
   },
+  destroy: async (req, res) => {
+    let { id } = req.params
+
+    try {
+        let response = await Reaction.findOneAndUpdate({ _id: id }, { $pull: { userId: req.user.id } }, { new: true })
+        res.status(200).json({
+            response,
+            message: `reaction deleted`,
+            success: true,
+        })
+    } catch (error) {
+        res.status(400).json({
+            message: error.message,
+            success: false
+        })
+    }
+},
 };
 
 module.exports = controller;
