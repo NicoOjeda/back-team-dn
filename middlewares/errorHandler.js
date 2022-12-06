@@ -1,10 +1,8 @@
-const errorHandler = {
+const errorHandler = (error, req , res, next) => {
+     console.log(error.message);
+     return    res.status(400).json({message: error.message})
 
-
-    notFound: (req, res, next) => {
-            res.status(404).json({message: `Ruta ${req.url} method ${req.method} no está disponible`})
-
-    }
+    
 
 }
 module.exports = errorHandler

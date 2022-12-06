@@ -46,3 +46,45 @@ describe('post /api/cities', function(done){
 })
 
 
+
+describe('post /api/cities', function(done){
+  it('escriba su nombre mediante letras', function(done){
+      request(app)
+      .post('/api/cities')
+      .send({})
+      .expect((response) => {
+        assert.equal(response.status,400);
+  })
+      .end(function (err,res){
+          console.log(err);
+          if(err) return done(err);
+          return done()
+      })
+  })
+
+  
+
+})
+
+
+describe('delete /api/shows/:id', function(done){
+  it('must delete a city respond with 200  status code', function(done){
+    request(app)
+    .delete('/api/cities/636d52b11b58293a27c69f24')
+    .expect(200)
+    .end(function (err,res){
+      console.log(err)
+      if(err) return done(err);
+      return done()
+
+
+    })
+
+
+
+  })
+
+
+
+
+})
