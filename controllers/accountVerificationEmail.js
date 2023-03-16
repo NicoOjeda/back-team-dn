@@ -57,7 +57,7 @@ function getEmailBody({mail, host, code}) {
                         <tbody>
                             <tr>
                                 <td class="esd-stripe" align="center">
-                                    <table bgcolor="#efefef" class="es-content-body" align="center" cellpadding="0" cellspacing="0" width="600" style="border-radius: 20px 20px 0px 0px; background-color: #efefef; background-image: url(https://img.freepik.com/foto-gratis/equipaje-amarillo-plano-espacio-copia_23-2148786124.jpg?w=826&t=st=1678933804~exp=1678934404~hmac=cc1e5821318a3724fc140c01f4cff4ddfc69aaa14f8af5bbb3b4d5cd7756d8be); background-repeat: no-repeat; background-position: center top;" background="https://img.freepik.com/foto-gratis/equipaje-amarillo-plano-espacio-copia_23-2148786124.jpg?w=826&t=st=1678933804~exp=1678934404~hmac=cc1e5821318a3724fc140c01f4cff4ddfc69aaa14f8af5bbb3b4d5cd7756d8be">
+                                    <table bgcolor="#efefef" class="es-content-body" align="center" cellpadding="0" cellspacing="0" width="600" style="border-radius: 20px 20px 0px 0px; background-color: #efefef; background-image: url(https://img.freepik.com/foto-gratis/equipaje-amarillo-plano-espacio-copia_23-2148786124.jpg?w=826&t=st=1678933804~exp=1678934404~hmac=cc1e5821318a3724fc140c01f4cff4ddfc69aaa14f8af5bbb3b4d5cd7756d8be); background-repeat: no-repeat; background-position: center top; padding: 1rem;" background="https://img.freepik.com/foto-gratis/equipaje-amarillo-plano-espacio-copia_23-2148786124.jpg?w=826&t=st=1678933804~exp=1678934404~hmac=cc1e5821318a3724fc140c01f4cff4ddfc69aaa14f8af5bbb3b4d5cd7756d8be">
                                         <tbody>
                                             <tr>
                                                 <td class="esd-structure es-p40t es-p40r es-p40l" align="left">
@@ -84,7 +84,7 @@ function getEmailBody({mail, host, code}) {
                                                         <tbody>
                                                             <tr>
                                                                 <td width="520" class="esd-container-frame" align="center" valign="top">
-                                                                    <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#fafafa" style="background-color: #fafafa; border-radius: 10px; border-collapse: separate;">
+                                                                    <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#fafafa" style="background-color: #fafafa; border-radius: 10px; border-collapse: separate; padding: 1rem;">
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td align="left" class="esd-block-text es-p20">
@@ -153,7 +153,7 @@ function getEmailBody({mail, host, code}) {
                                                                     <table cellpadding="0" cellspacing="0" width="100%">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td align="left" class="esd-block-text">
+                                                                                <td align="left" class="esd-block-text" style="padding-left: 1rem">
                                                                                     <p>Thanks,<br><br>MyTinerary</p>
                                                                                 </td>
                                                                             </tr>
@@ -189,7 +189,7 @@ function getEmailBody({mail, host, code}) {
                                     <table bgcolor="#efefef" class="es-content-body" align="center" cellpadding="0" cellspacing="0" width="600" style="border-radius: 0px 0px 20px 20px;">
                                         <tbody>
                                             <tr>
-                                                <td class="esd-structure es-p20t es-p20b es-p40r es-p40l esdev-adapt-off" align="left">
+                                                <td class="esd-structure es-p20t es-p20b es-p40r es-p40l esdev-adapt-off" align="left" style="padding: 1rem">
                                                     <table width="520" cellpadding="0" cellspacing="0" class="esdev-mso-table">
                                                         <tbody>
                                                             <tr>
@@ -220,7 +220,7 @@ function getEmailBody({mail, host, code}) {
                                                                                         <tbody>
                                                                                             <tr>
                                                                                                 <td align="left" class="esd-block-text">
-                                                                                                    <p style="font-size: 16px;">This link expire in 24 hours. If you have questions, <a target="_blank" style="font-size: 16px;" href="https://viewstripo.email">we're here to help</a></p>
+                                                                                                    <p style="font-size: 16px;">This link expire in 24 hours. If you have questions, <a target="_blank" style="font-size: 16px;" href="mailto:dnteam22@gmail.com">we're here to help</a></p>
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </tbody>
