@@ -23,7 +23,7 @@ const cityCreated = {
     let query = {}
     console.log(req.query)
     if(req.query.name){
-      query = {name:  {  $regex :  req.query.name, $options: 'i' + req.query.name }}
+      query = {name:  {  $regex :  req.query.name, $options: 'i'}}
     }
 
 
